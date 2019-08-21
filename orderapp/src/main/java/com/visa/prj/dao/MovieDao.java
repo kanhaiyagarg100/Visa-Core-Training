@@ -6,23 +6,25 @@ import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Repository;
 
+import com.visa.prj.entity.Actor;
 import com.visa.prj.entity.Movie;
 
 @Repository
-@Transactional //Bad practice!!! no need to make select statements transactional
+@Transactional // this is a bad practice... should include transactional in method
 public class MovieDao {
 	@PersistenceContext
 	private EntityManager em;
 	
-	public void addMovie(Movie m) {
+	public void addMovie(Movie m ) {
 		em.persist(m);
 	}
-	
 	public Movie getMovie(int id) {
 		return em.find(Movie.class, id);
 	}
-	
 	public void updateMovie(Movie m) {
 		em.merge(m);
+	}
+	public Actor getActor(int id) {
+		return em.find(Actor.class, id);
 	}
 }

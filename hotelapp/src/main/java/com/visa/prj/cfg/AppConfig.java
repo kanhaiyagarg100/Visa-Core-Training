@@ -23,8 +23,8 @@ public class AppConfig {
 		DriverManagerDataSource ds = new DriverManagerDataSource();
 			ds.setDriverClassName("com.mysql.jdbc.Driver");
 			ds.setUrl("jdbc:mysql://localhost:3306/hotel_db?createDatabaseIfNotExist=true");
-			ds.setUsername("");
-			ds.setPassword("");
+			ds.setUsername("visa");
+			ds.setPassword("secret");
 		return ds;
 	}
 	//configure EntityManagerFactory

@@ -4,7 +4,6 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.TypedQuery;
 
 import org.springframework.stereotype.Repository;
 
@@ -12,6 +11,7 @@ import com.visa.prj.entity.Booking;
 import com.visa.prj.entity.Hotel;
 import com.visa.prj.entity.User;
 
+@Repository
 public class BookingDaoJpaImpl implements BookingDao {
 	
 	@PersistenceContext
@@ -19,27 +19,30 @@ public class BookingDaoJpaImpl implements BookingDao {
 	
 	@Override
 	public List<Hotel> findHotels(String criteria) {
-		 return null;
+		 return em.createQuery("select h from Hotel h where h.city like :criteria", Hotel.class).setParameter("criteria", "%"+criteria+"%")
+		 	.getResultList();
 	}
 
 	@Override
 	public Hotel findHotelById(long id) {
-		return null;
+		return em.find(Hotel.class, id);	
 	}
 
 	@Override
 	public User getUser(String email, String password) {
-		return null;
+		return em.find(User.class, email);
 	}
 
 	@Override
 	public long createBooking(Booking booking) {
-		return 0;
+		em.persist(booking);
+		return 1;
 	}
 
 	@Override
 	public List<Booking> getAllBookingsOfUser(User user) {
-		return null;
+		return em.createQuery("select b from Booking b where b.user=:user", Booking.class).setParameter("user", user)
+				.getResultList();
 	}
 
 }

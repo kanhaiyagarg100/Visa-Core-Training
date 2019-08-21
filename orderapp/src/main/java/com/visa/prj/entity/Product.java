@@ -10,16 +10,14 @@ import javax.persistence.Table;
 @Table(name="products")
 public class Product {
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY) // AUTO_INCREMENT
     private int id;
     private String name;
     private String category;
     private double price;
     private int count;
-    
     public Product() {
     }
-    
     public Product(int id, String name, String category, double price, int count) {
         this.id = id;
         this.name = name;

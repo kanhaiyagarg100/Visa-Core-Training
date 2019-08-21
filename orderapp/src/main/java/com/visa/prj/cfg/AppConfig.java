@@ -20,7 +20,7 @@ public class AppConfig {
     // configure datasource
     @Bean
     public DriverManagerDataSource dataSource() {
-        DriverManagerDataSource ds = new DriverManagerDataSource();
+        DriverManagerDataSource ds = new DriverManagerDataSource(); // pool of db connections
             ds.setDriverClassName("com.mysql.jdbc.Driver");
             ds.setUrl("jdbc:mysql://localhost:3306/visa?createDatabaseIfNotExist=true");
             ds.setUsername("visa");
@@ -37,9 +37,10 @@ public class AppConfig {
             emf.setPackagesToScan("com.visa.prj.entity");
         Properties props = new Properties();
             props.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL5Dialect");
-            props.setProperty("hibernate.show_sql", "true");
-            props.setProperty("hibernate.format_sql", "true");
             props.setProperty("hibernate.hbm2ddl.auto", "update") ; // create or update
+           props.setProperty("hibernate.show_sql", "true");
+           props.setProperty("hibernate.format_sql", "true");
+            //hbm hibernate mapping , ddl - data definition language
             emf.setJpaProperties(props);
         return emf;
     }
@@ -49,8 +50,6 @@ public class AppConfig {
         return new JpaTransactionManager();
     }
 }
-
-
 
 
 

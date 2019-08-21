@@ -7,13 +7,12 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name= "actors")
+@Table(name="actors")
 public class Actor {
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int aid;
 	private String name;
-	
 	public int getAid() {
 		return aid;
 	}
@@ -26,6 +25,5 @@ public class Actor {
 	public void setName(String name) {
 		this.name = name;
 	}
-	
 	
 }

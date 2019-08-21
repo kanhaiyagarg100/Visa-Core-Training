@@ -5,15 +5,21 @@ import java.text.DateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-import javax.persistence.Column;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 /**
  * A Hotel Booking made by a User.
  */
+@Entity
+@Table(name="bookings")
 public class Booking implements Serializable {
  
 	private static final long serialVersionUID = -899456379957352658L;
@@ -25,12 +31,12 @@ public class Booking implements Serializable {
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
 	private Long id;
 	
-	@ManyToOne
-	@Column(name= "user")
+	@ManyToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+	@JoinColumn(name="user_id")
 	private User user;
 
-	@ManyToOne
-	@Column(name= "hotel")
+	@ManyToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+	@JoinColumn(name="hotel_id")
 	private Hotel hotel;
 
 	private Date checkinDate;

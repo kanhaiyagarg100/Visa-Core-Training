@@ -44,9 +44,9 @@ Search</a></p>
 		</tbody>
 	</table>
 	<div class="buttonGroup">
-	<div class="span-3"><c:if test="${searchCriteria.page > 0}">
+	<div class="span-3"><c:if test="${searchCriteria.pageSize > 0}">
 		<a id="prevResultsLink"
-			href="hotels?searchString=${searchCriteria.searchString}&pageSize=${searchCriteria.pageSize}&page=${searchCriteria.page - 1}">Previous
+			href="hotels?searchString=${searchCriteria.searchString}&pageSize=${searchCriteria.pageSize}&page=${searchCriteria.pageSize - 1}">Previous
 		Results</a>
 
 	</c:if></div>

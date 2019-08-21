@@ -22,11 +22,11 @@ public class OrderService {
 	@Autowired
 	private OrderDao orderDao;
 	
-	@Transactional 
+	@Transactional
 	public void placeOrder(Order o) {
 		orderDao.placeOrder(o);
 		double total = 0.0;
-		List<Item> items= o.getItems();
+		List<Item> items = o.getItems();
 		for(Item i : items) {
 			total += i.getAmount();
 			Product p = getById(i.getProduct().getId());
@@ -34,11 +34,9 @@ public class OrderService {
 		}
 		o.setTotal(total);
 	}
-	
 	public List<Order> getOrders(Customer c){
 		return orderDao.getOrders(c);
 	}
-	
 	@Transactional
 	public int insertProduct(Product p) {
 		return productDao.addProduct(p);

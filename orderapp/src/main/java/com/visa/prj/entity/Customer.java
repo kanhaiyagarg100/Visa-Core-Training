@@ -12,7 +12,6 @@ public class Customer {
 	private String email;
 	@Column(name="first_name")
 	private String firstName;
-	
 	public String getEmail() {
 		return email;
 	}
@@ -25,6 +24,5 @@ public class Customer {
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
-	
 	
 }

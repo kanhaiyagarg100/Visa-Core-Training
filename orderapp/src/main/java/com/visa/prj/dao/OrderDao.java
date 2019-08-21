@@ -8,5 +8,5 @@ import com.visa.prj.entity.Order;
 public interface OrderDao {
 	void placeOrder(Order o);
 	List<Order> getOrders(Customer c);
-	List<Order> getOrdersofCustomer(Customer c);
+	//List<Order> getOrdersOfCustomer(Customer c);
 }

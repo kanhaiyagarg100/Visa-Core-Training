@@ -2,22 +2,36 @@ package com.visa.prj.entity;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 /**
  * A user who can book hotels.
  */
+@Entity
+@Table(name="users")
 public class User implements Serializable {
 
-    /**
+    public User(String email, String password) {
+		super();
+		this.email = email;
+		this.password = password;
+	}
+
+	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
-	@Id
 	private String username;
     private boolean enabled;
+    
+    @Id
+	@Column(name="user_id")
     private String email;
+    
     private String password;
     private String name;
 

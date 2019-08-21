@@ -19,32 +19,31 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table(name="orders")
+@Table(name = "orders")
 public class Order {
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int id;
-	
-	@Column(name="order_date")
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date orderDate= new Date();
-	
-	@ManyToOne
-	@JoinColumn(name="customer")
-	private Customer customer;
-	
-	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
-	@JoinColumn(name="order_id")
-	private List<Item> items= new ArrayList<>();
-	
-	private double total;
+	@GeneratedValue(strategy = GenerationType.IDENTITY) // AUTO_INCREMENT
+    private int oid;
+    @Column(name="order_date")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date orderDate = new Date();
+    
+    @ManyToOne
+    @JoinColumn(name = "customer") //fk to email of customer @JoinColumn
+    private Customer customer;
+    
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "order_id") // fk to orders in items table
+    private List<Item> items = new ArrayList<>();
+    
+    private double total;
 
-	public int getId() {
-		return id;
+	public int getOid() {
+		return oid;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setOid(int oid) {
+		this.oid = oid;
 	}
 
 	public Date getOrderDate() {
@@ -78,6 +77,5 @@ public class Order {
 	public void setTotal(double total) {
 		this.total = total;
 	}
-	
-	
+    
 }
