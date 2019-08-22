@@ -9,8 +9,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.visa.prj.entity.Booking;
 import com.visa.prj.entity.Hotel;
 import com.visa.prj.entity.SearchCriteria;
+import com.visa.prj.entity.User;
 import com.visa.prj.service.BookingService;
 
 @Controller
@@ -42,6 +44,17 @@ public class HotelController {
 		Hotel hotel = bs.getHotelById(id);
 		mav.setViewName("showHotel.jsp");
 		mav.addObject("hotel", hotel);
+		return mav;
+	}
+	
+	@RequestMapping("bookingForm.do")
+	public ModelAndView book(@ModelAttribute(name="hotel") Hotel hotel) {
+		ModelAndView mav= new ModelAndView();
+		Booking booking= new Booking();
+		booking.setHotel(hotel);
+		mav.addObject("user", new User());
+		mav.addObject("booking", booking);
+		mav.setViewName("bookingForm.jsp");
 		return mav;
 	}
 }
